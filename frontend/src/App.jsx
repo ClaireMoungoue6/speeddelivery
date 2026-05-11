@@ -4,8 +4,8 @@ import Register from './pages/Register';
 import DashboardClient from './pages/DashboardClient';
 import DashboardLivreur from './pages/DashboardLivreur';
 import DashboardAdmin from './pages/DashboardAdmin';
+import NouvelleCommande from './pages/NouvelleCommande';
 
-// Protection des routes
 const PrivateRoute = ({ children, allowedRoles }) => {
   const token = localStorage.getItem('token');
   const user = JSON.parse(localStorage.getItem('user'));
@@ -21,14 +21,13 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Redirection par défaut */}
         <Route path="/" element={<Navigate to="/login" />} />
 
-        {/* Routes publiques */}
+        {/* Publiques */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
-        {/* Routes protégées */}
+        {/* Client */}
         <Route
           path="/dashboard/client"
           element={
@@ -38,6 +37,16 @@ export default function App() {
           }
         />
         <Route
+          path="/commandes/new"
+          element={
+            <PrivateRoute allowedRoles={['CLIENT']}>
+              <NouvelleCommande />
+            </PrivateRoute>
+          }
+        />
+
+        {/* Livreur */}
+        <Route
           path="/dashboard/livreur"
           element={
             <PrivateRoute allowedRoles={['LIVREUR']}>
@@ -45,6 +54,8 @@ export default function App() {
             </PrivateRoute>
           }
         />
+
+        {/* Admin */}
         <Route
           path="/dashboard/admin"
           element={

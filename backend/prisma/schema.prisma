@@ -14,18 +14,43 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  name      String
-  email     String   @unique
-  password  String
-  role      Role     @default(CLIENT)
-  phone     String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id              Int       @id @default(autoincrement())
+  name            String
+  email           String    @unique
+  password        String
+  role            Role      @default(CLIENT)
+  phone           String?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  commandesClient Commande[] @relation("ClientCommandes")
+  commandesLivreur Commande[] @relation("LivreurCommandes")
+}
+
+model Commande {
+  id            Int      @id @default(autoincrement())
+  adresseDepart String
+  adresseArrivee String
+  description   String?
+  prix          Float    @default(0)
+  statut        Statut   @default(EN_ATTENTE)
+  clientId      Int
+  livreurId     Int?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  client        User     @relation("ClientCommandes", fields: [clientId], references: [id])
+  livreur       User?    @relation("LivreurCommandes", fields: [livreurId], references: [id])
 }
 
 enum Role {
   CLIENT
   LIVREUR
   ADMIN
+}
+
+enum Statut {
+  EN_ATTENTE
+  ACCEPTEE
+  EN_COURS
+  LIVREE
+  ANNULEE
 }

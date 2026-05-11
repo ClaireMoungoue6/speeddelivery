@@ -100,4 +100,20 @@
     }
     };
 
-    module.exports = { register, login, getProfile };
+        // ADMIN : Tous les utilisateurs
+    const getAllUsers = async (req, res) => {
+    try {
+        const users = await prisma.user.findMany({
+        select: {
+            id: true, name: true, email: true,
+            role: true, phone: true, createdAt: true,
+        },
+        orderBy: { createdAt: 'desc' },
+        });
+        res.json(users);
+    } catch (error) {
+        res.status(500).json({ message: 'Erreur serveur' });
+    }
+    };
+
+module.exports = { register, login, getProfile, getAllUsers };
