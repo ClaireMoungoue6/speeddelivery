@@ -1,3 +1,4 @@
+import LandingPage from './pages/LandingPage';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -5,6 +6,7 @@ import DashboardClient from './pages/DashboardClient';
 import DashboardLivreur from './pages/DashboardLivreur';
 import DashboardAdmin from './pages/DashboardAdmin';
 import NouvelleCommande from './pages/NouvelleCommande';
+
 
 const PrivateRoute = ({ children, allowedRoles }) => {
   const token = localStorage.getItem('token');
@@ -20,8 +22,8 @@ const PrivateRoute = ({ children, allowedRoles }) => {
 export default function App() {
   return (
     <BrowserRouter>
+    <Route path="/" element={<LandingPage />} />
       <Routes>
-        <Route path="/" element={<Navigate to="/login" />} />
 
         {/* Publiques */}
         <Route path="/login" element={<Login />} />
