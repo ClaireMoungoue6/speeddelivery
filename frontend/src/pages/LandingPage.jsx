@@ -49,7 +49,7 @@
     ];
 
     const contacts = [
-        { icon: '📱', title: 'WhatsApp', info: '+237 658 056 947', link: 'https://wa.me/237658056947', btn: 'Ecrire sur WhatsApp' },
+        { icon: '📱', title: 'WhatsApp', info: '+237 651 42 43 51', link: 'https://wa.me/237651424351', btn: 'Ecrire sur WhatsApp' },
         { icon: '📘', title: 'Facebook', info: 'SpeedDelivery Douala', link: '#', btn: 'Suivre sur Facebook' },
         { icon: '🎵', title: 'TikTok', info: '@speeddelivery', link: '#', btn: 'Suivre sur TikTok' },
     ];
