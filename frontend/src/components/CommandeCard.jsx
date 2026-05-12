@@ -1,70 +1,57 @@
     export default function CommandeCard({ commande }) {
     const statutColors = {
-        EN_ATTENTE: 'bg-yellow-100 text-yellow-700',
-        ACCEPTEE: 'bg-blue-100 text-blue-700',
-        EN_COURS: 'bg-orange-100 text-orange-700',
-        LIVREE: 'bg-green-100 text-green-700',
-        ANNULEE: 'bg-red-100 text-red-700',
+        EN_ATTENTE: { bg: 'rgba(234,179,8,0.12)', color: '#fbbf24', border: 'rgba(234,179,8,0.3)' },
+        ACCEPTEE: { bg: 'rgba(59,130,246,0.12)', color: '#60a5fa', border: 'rgba(59,130,246,0.3)' },
+        EN_COURS: { bg: 'rgba(5,150,105,0.12)', color: '#10b981', border: 'rgba(5,150,105,0.3)' },
+        LIVREE: { bg: 'rgba(5,150,105,0.2)', color: '#34d399', border: 'rgba(52,211,153,0.4)' },
+        ANNULEE: { bg: 'rgba(239,68,68,0.12)', color: '#f87171', border: 'rgba(239,68,68,0.3)' },
     };
 
     const statutLabels = {
         EN_ATTENTE: '⏳ En attente',
-        ACCEPTEE: '✅ Acceptée',
+        ACCEPTEE: '✅ Acceptee',
         EN_COURS: '🚀 En cours',
-        LIVREE: '📦 Livrée',
-        ANNULEE: '❌ Annulée',
+        LIVREE: '📦 Livree',
+        ANNULEE: '❌ Annulee',
+    };
+
+    const sc = statutColors[commande.statut] || statutColors.EN_ATTENTE;
+
+    const S = {
+        card: { backgroundColor: '#131f2e', border: '1px solid #1e2d3d', borderRadius: 16, padding: 20, fontFamily: 'sans-serif' },
+        header: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 },
+        id: { fontSize: 13, fontWeight: 700, color: '#64748b' },
+        badge: { fontSize: 12, fontWeight: 600, padding: '4px 12px', borderRadius: 999, backgroundColor: sc.bg, color: sc.color, border: `1px solid ${sc.border}` },
+        row: { display: 'flex', alignItems: 'flex-start', gap: 10, marginBottom: 10 },
+        rowIcon: { fontSize: 16, marginTop: 2 },
+        rowLabel: { fontSize: 11, color: '#475569', marginBottom: 2 },
+        rowValue: { fontSize: 14, color: '#cbd5e1' },
+        desc: { fontSize: 13, color: '#475569', fontStyle: 'italic', marginBottom: 12 },
+        footer: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: 12, borderTop: '1px solid #1e2d3d' },
+        price: { fontSize: 16, fontWeight: 900, color: '#10b981' },
+        livreur: { fontSize: 12, color: '#64748b' },
+        date: { fontSize: 12, color: '#334155' },
     };
 
     return (
-        <div className="bg-white rounded-xl shadow-sm p-5 border border-gray-100">
-        {/* Header */}
-        <div className="flex justify-between items-center mb-3">
-            <span className="text-sm font-semibold text-gray-500">
-            Commande #{commande.id}
-            </span>
-            <span className={`text-xs font-medium px-3 py-1 rounded-full ${statutColors[commande.statut]}`}>
-            {statutLabels[commande.statut]}
-            </span>
+        <div style={S.card}>
+        <div style={S.header}>
+            <span style={S.id}>Commande #{commande.id}</span>
+            <span style={S.badge}>{statutLabels[commande.statut]}</span>
         </div>
-
-        {/* Adresses */}
-        <div className="space-y-2 mb-3">
-            <div className="flex items-start gap-2">
-            <span className="text-green-500 mt-0.5">📍</span>
-            <div>
-                <p className="text-xs text-gray-400">Départ</p>
-                <p className="text-sm text-gray-700">{commande.adresseDepart}</p>
-            </div>
-            </div>
-            <div className="flex items-start gap-2">
-            <span className="text-red-500 mt-0.5">🎯</span>
-            <div>
-                <p className="text-xs text-gray-400">Arrivée</p>
-                <p className="text-sm text-gray-700">{commande.adresseArrivee}</p>
-            </div>
-            </div>
+        <div style={S.row}>
+            <span style={S.rowIcon}>📍</span>
+            <div><div style={S.rowLabel}>Depart</div><div style={S.rowValue}>{commande.adresseDepart}</div></div>
         </div>
-
-        {/* Description */}
-        {commande.description && (
-            <p className="text-sm text-gray-500 mb-3 italic">
-            "{commande.description}"
-            </p>
-        )}
-
-        {/* Footer */}
-        <div className="flex justify-between items-center pt-3 border-t border-gray-100">
-            <span className="text-orange-500 font-bold">
-            {commande.prix} FCFA
-            </span>
-            {commande.livreur && (
-            <span className="text-xs text-gray-500">
-                🛵 {commande.livreur.name}
-            </span>
-            )}
-            <span className="text-xs text-gray-400">
-            {new Date(commande.createdAt).toLocaleDateString('fr-FR')}
-            </span>
+        <div style={S.row}>
+            <span style={S.rowIcon}>🎯</span>
+            <div><div style={S.rowLabel}>Arrivee</div><div style={S.rowValue}>{commande.adresseArrivee}</div></div>
+        </div>
+        {commande.description && <div style={S.desc}>"{commande.description}"</div>}
+        <div style={S.footer}>
+            <span style={S.price}>{commande.prix} FCFA</span>
+            {commande.livreur && <span style={S.livreur}>🛵 {commande.livreur.name}</span>}
+            <span style={S.date}>{new Date(commande.createdAt).toLocaleDateString('fr-FR')}</span>
         </div>
         </div>
     );

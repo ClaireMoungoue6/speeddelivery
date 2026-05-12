@@ -19,27 +19,9 @@
     ];
 
     const tarifs = [
-        {
-        name: 'Express',
-        price: '500',
-        desc: 'Livraison dans le meme quartier',
-        features: ['Delai 20-30 min', 'Jusqu a 5kg', 'Suivi en temps reel'],
-        popular: false,
-        },
-        {
-        name: 'Standard',
-        price: '1000',
-        desc: 'Livraison intra-ville Douala',
-        features: ['Delai 45-60 min', 'Jusqu a 15kg', 'Suivi en temps reel', 'Confirmation SMS'],
-        popular: true,
-        },
-        {
-        name: 'Premium',
-        price: '2000',
-        desc: 'Livraison prioritaire et fragile',
-        features: ['Delai 30 min garanti', 'Poids illimite', 'Suivi GPS live', 'Assurance colis'],
-        popular: false,
-        },
+        { name: 'Express', price: '500', desc: 'Livraison dans le meme quartier', features: ['Delai 20-30 min', 'Jusqu a 5kg', 'Suivi en temps reel'], popular: false },
+        { name: 'Standard', price: '1000', desc: 'Livraison intra-ville Douala', features: ['Delai 45-60 min', 'Jusqu a 15kg', 'Suivi en temps reel', 'Confirmation SMS'], popular: true },
+        { name: 'Premium', price: '2000', desc: 'Livraison prioritaire et fragile', features: ['Delai 30 min garanti', 'Poids illimite', 'Suivi GPS live', 'Assurance colis'], popular: false },
     ];
 
     const temoignages = [
@@ -49,211 +31,227 @@
     ];
 
     const contacts = [
-        { icon: '📱', title: 'WhatsApp', info: '+237 651 42 43 51', link: 'https://wa.me/237651424351', btn: 'Ecrire sur WhatsApp' },
+        { icon: '📱', title: 'WhatsApp', info: '+237 658 056 947', link: 'https://wa.me/237658056947', btn: 'Ecrire sur WhatsApp' },
         { icon: '📘', title: 'Facebook', info: 'SpeedDelivery Douala', link: '#', btn: 'Suivre sur Facebook' },
         { icon: '🎵', title: 'TikTok', info: '@speeddelivery', link: '#', btn: 'Suivre sur TikTok' },
     ];
 
-    return (
-        <div className="font-sans">
+    const S = {
+        page: { fontFamily: 'sans-serif', backgroundColor: '#0f1923', color: '#f1f5f9' },
+        nav: { position: 'fixed', top: 0, width: '100%', zIndex: 50, backgroundColor: 'rgba(15,25,35,0.92)', backdropFilter: 'blur(12px)', borderBottom: '1px solid rgba(16,185,129,0.15)', padding: '0' },
+        navInner: { maxWidth: 1200, margin: '0 auto', padding: '16px 24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' },
+        logo: { display: 'flex', alignItems: 'center', gap: 12 },
+        logoIcon: { width: 40, height: 40, backgroundColor: '#059669', borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20 },
+        logoText: { fontWeight: 900, fontSize: 20, color: '#f1f5f9' },
+        logoSub: { fontSize: 10, color: '#10b981', letterSpacing: 3, marginTop: 2 },
+        navLinks: { display: 'flex', gap: 32, alignItems: 'center' },
+        navLink: { color: '#94a3b8', fontSize: 14, textDecoration: 'none', transition: 'color 0.2s' },
+        btnOutline: { fontSize: 13, color: '#10b981', border: '1px solid #059669', padding: '8px 18px', borderRadius: 8, background: 'transparent', cursor: 'pointer', transition: 'all 0.2s' },
+        btnSolid: { fontSize: 13, backgroundColor: '#059669', color: 'white', padding: '8px 18px', borderRadius: 8, border: 'none', cursor: 'pointer', fontWeight: 700, transition: 'all 0.2s' },
+        hero: { minHeight: '100vh', backgroundColor: '#0f1923', display: 'flex', alignItems: 'center', position: 'relative', overflow: 'hidden', paddingTop: 80 },
+        heroInner: { maxWidth: 1200, margin: '0 auto', padding: '60px 24px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48, alignItems: 'center' },
+        badge: { display: 'inline-flex', alignItems: 'center', gap: 8, backgroundColor: 'rgba(5,150,105,0.12)', border: '1px solid rgba(5,150,105,0.3)', color: '#10b981', padding: '8px 16px', borderRadius: 999, fontSize: 13, marginBottom: 24 },
+        dot: { width: 8, height: 8, backgroundColor: '#10b981', borderRadius: '50%' },
+        h1: { fontSize: 68, fontWeight: 900, lineHeight: 1.05, marginBottom: 24, color: '#f1f5f9' },
+        h1accent: { color: '#10b981' },
+        heroP: { color: '#94a3b8', fontSize: 17, lineHeight: 1.7, marginBottom: 36 },
+        heroBtns: { display: 'flex', gap: 16, flexWrap: 'wrap' },
+        btnHero: { backgroundColor: '#059669', color: 'white', fontWeight: 700, padding: '14px 32px', borderRadius: 12, fontSize: 16, border: 'none', cursor: 'pointer' },
+        btnHeroOut: { border: '1px solid #059669', color: '#10b981', fontWeight: 700, padding: '14px 32px', borderRadius: 12, fontSize: 16, background: 'transparent', cursor: 'pointer', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 8 },
+        stats: { display: 'flex', gap: 40, marginTop: 48 },
+        statNum: { fontSize: 32, fontWeight: 900, color: '#10b981' },
+        statLabel: { fontSize: 13, color: '#64748b', marginTop: 2 },
+        heroCard: { backgroundColor: 'rgba(5,150,105,0.08)', border: '1px solid rgba(5,150,105,0.2)', borderRadius: 24, padding: 32, textAlign: 'center' },
+        heroCardRow: { backgroundColor: 'rgba(5,150,105,0.12)', border: '1px solid rgba(5,150,105,0.2)', borderRadius: 12, padding: '12px 16px', marginBottom: 12 },
+        heroCardText: { color: '#10b981', fontWeight: 700, fontSize: 14 },
+        heroCardResult: { backgroundColor: '#059669', borderRadius: 12, padding: 12, marginTop: 16 },
+        sectionDark: { backgroundColor: '#0a1520', padding: '80px 0' },
+        sectionMid: { backgroundColor: '#0f1923', padding: '80px 0' },
+        sectionInner: { maxWidth: 1200, margin: '0 auto', padding: '0 24px' },
+        sectionTitle: { textAlign: 'center', marginBottom: 56 },
+        h2: { fontSize: 38, fontWeight: 900, color: '#f1f5f9', marginBottom: 12 },
+        h2accent: { color: '#10b981' },
+        sectionSub: { color: '#64748b', fontSize: 16 },
+        grid3: { display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 },
+        card: { backgroundColor: '#131f2e', border: '1px solid #1e2d3d', borderRadius: 20, padding: 24, transition: 'border-color 0.2s' },
+        cardIcon: { fontSize: 36, marginBottom: 16 },
+        cardTitle: { color: '#f1f5f9', fontWeight: 700, fontSize: 17, marginBottom: 8 },
+        cardDesc: { color: '#64748b', fontSize: 14, lineHeight: 1.6 },
+        etapeNum: { display: 'inline-block', backgroundColor: '#10b981', color: '#0f1923', fontSize: 11, fontWeight: 900, padding: '2px 8px', borderRadius: 999, marginBottom: 12 },
+        etapeIcon: { width: 60, height: 60, backgroundColor: '#059669', borderRadius: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 28, margin: '0 auto 16px' },
+        etapeTitle: { color: '#f1f5f9', fontWeight: 700, fontSize: 19, marginBottom: 10 },
+        etapeDesc: { color: '#64748b', lineHeight: 1.6 },
+        tarifCard: { backgroundColor: '#131f2e', borderRadius: 20, padding: 32, position: 'relative' },
+        tarifCardPop: { backgroundColor: '#131f2e', borderRadius: 20, padding: 32, position: 'relative', border: '2px solid #059669', transform: 'scale(1.05)' },
+        popularBadge: { position: 'absolute', top: -16, left: '50%', transform: 'translateX(-50%)', backgroundColor: '#059669', color: 'white', fontSize: 11, fontWeight: 900, padding: '4px 16px', borderRadius: 999, whiteSpace: 'nowrap' },
+        tarifName: { color: '#f1f5f9', fontWeight: 700, fontSize: 20, marginBottom: 4 },
+        tarifDesc: { color: '#64748b', fontSize: 13, marginBottom: 16 },
+        tarifPrice: { fontSize: 40, fontWeight: 900, color: '#10b981' },
+        tarifUnit: { color: '#64748b', fontSize: 14, marginLeft: 4 },
+        tarifFeature: { display: 'flex', alignItems: 'center', gap: 8, color: '#cbd5e1', fontSize: 14, marginBottom: 8 },
+        tarifCheck: { color: '#10b981', fontWeight: 700 },
+        btnTarifSolid: { width: '100%', padding: '12px 0', borderRadius: 12, backgroundColor: '#059669', color: 'white', fontWeight: 700, border: 'none', cursor: 'pointer', marginTop: 24 },
+        btnTarifOut: { width: '100%', padding: '12px 0', borderRadius: 12, backgroundColor: 'transparent', color: '#10b981', fontWeight: 700, border: '1px solid #059669', cursor: 'pointer', marginTop: 24 },
+        temoCard: { backgroundColor: '#131f2e', border: '1px solid #1e2d3d', borderRadius: 20, padding: 24 },
+        stars: { color: '#fbbf24', fontSize: 16, marginBottom: 12 },
+        temoMsg: { color: '#94a3b8', fontSize: 14, lineHeight: 1.7, marginBottom: 20 },
+        temoAvatar: { width: 40, height: 40, backgroundColor: '#059669', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 700, fontSize: 16 },
+        temoName: { color: '#f1f5f9', fontWeight: 700, fontSize: 14 },
+        temoRole: { color: '#64748b', fontSize: 12 },
+        livreurSection: { backgroundColor: '#059669', padding: '80px 0', textAlign: 'center' },
+        livreurInner: { maxWidth: 800, margin: '0 auto', padding: '0 24px' },
+        livreurH2: { fontSize: 38, fontWeight: 900, color: 'white', marginBottom: 16 },
+        livreurP: { color: 'rgba(255,255,255,0.85)', fontSize: 17, marginBottom: 32 },
+        livreurBadges: { display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 12, marginBottom: 36 },
+        livreurBadge: { backgroundColor: 'rgba(255,255,255,0.18)', color: 'white', padding: '8px 18px', borderRadius: 999, fontSize: 14, fontWeight: 500 },
+        btnLivreur: { backgroundColor: 'white', color: '#059669', fontWeight: 900, padding: '14px 40px', borderRadius: 12, fontSize: 17, border: 'none', cursor: 'pointer' },
+        contactCard: { backgroundColor: '#131f2e', border: '1px solid #1e2d3d', borderRadius: 20, padding: 24, textAlign: 'center' },
+        contactIcon: { fontSize: 36, marginBottom: 12 },
+        contactTitle: { color: '#f1f5f9', fontWeight: 700, marginBottom: 4 },
+        contactInfo: { color: '#64748b', fontSize: 14, marginBottom: 16 },
+        contactBtn: { display: 'inline-block', border: '1px solid #059669', color: '#10b981', padding: '8px 18px', borderRadius: 8, fontSize: 14, textDecoration: 'none' },
+        footer: { backgroundColor: '#080f18', borderTop: '1px solid #1e2d3d', padding: '40px 0' },
+        footerInner: { maxWidth: 1200, margin: '0 auto', padding: '0 24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 24 },
+        footerLinks: { display: 'flex', gap: 24 },
+        footerLink: { color: '#64748b', fontSize: 14, textDecoration: 'none' },
+        footerCopy: { color: '#334155', fontSize: 12 },
+    };
 
-        <nav className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-green-900/30">
-            <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-green-600 rounded-lg flex items-center justify-center">
-                <span className="text-white text-xl">⚡</span>
-                </div>
+    return (
+        <div style={S.page}>
+
+        <nav style={S.nav}>
+            <div style={S.navInner}>
+            <div style={S.logo}>
+                <div style={S.logoIcon}>⚡</div>
                 <div>
-                <span className="text-white font-black text-xl">
-                    <span className="text-green-400">SPEED</span>DELIVERY
-                </span>
-                <p className="text-green-400 text-xs tracking-widest">DOUALA · CAMEROUN</p>
+                <div style={S.logoText}><span style={{ color: '#10b981' }}>SPEED</span>DELIVERY</div>
+                <div style={S.logoSub}>DOUALA · CAMEROUN</div>
                 </div>
             </div>
-            <div className="hidden md:flex items-center gap-8">
-                <a href="#services" className="text-gray-300 hover:text-green-400 text-sm transition">Services</a>
-                <a href="#comment" className="text-gray-300 hover:text-green-400 text-sm transition">Comment ca marche</a>
-                <a href="#tarifs" className="text-gray-300 hover:text-green-400 text-sm transition">Tarifs</a>
-                <a href="#contact" className="text-gray-300 hover:text-green-400 text-sm transition">Contact</a>
+            <div style={S.navLinks}>
+                <a href="#services" style={S.navLink}>Services</a>
+                <a href="#comment" style={S.navLink}>Comment ca marche</a>
+                <a href="#tarifs" style={S.navLink}>Tarifs</a>
+                <a href="#contact" style={S.navLink}>Contact</a>
             </div>
-            <div className="flex gap-3">
-                <button
-                onClick={() => navigate('/login')}
-                className="text-sm text-green-400 border border-green-600 px-4 py-2 rounded-lg hover:bg-green-600 hover:text-white transition"
-                >
-                Connexion
-                </button>
-                <button
-                onClick={() => navigate('/register')}
-                className="text-sm bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-500 transition font-semibold"
-                >
-                Commander
-                </button>
+            <div style={{ display: 'flex', gap: 12 }}>
+                <button style={S.btnOutline} onClick={() => navigate('/login')}>Connexion</button>
+                <button style={S.btnSolid} onClick={() => navigate('/register')}>Commander</button>
             </div>
             </div>
         </nav>
 
-        <section className="relative min-h-screen bg-black flex items-center overflow-hidden">
-            <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute top-20 left-10 w-72 h-72 bg-green-600/20 rounded-full blur-3xl animate-pulse"></div>
-            <div className="absolute bottom-20 right-10 w-96 h-96 bg-green-400/10 rounded-full blur-3xl animate-pulse"></div>
-            <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-green-500/10 rounded-full blur-3xl animate-pulse"></div>
-            </div>
-            <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'linear-gradient(#22c55e 1px, transparent 1px), linear-gradient(90deg, #22c55e 1px, transparent 1px)', backgroundSize: '50px 50px' }}></div>
-            <div className="relative max-w-6xl mx-auto px-6 pt-24 w-full">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                <div className="inline-flex items-center gap-2 bg-green-600/20 border border-green-600/40 text-green-400 px-4 py-2 rounded-full text-sm mb-6">
-                    <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-                    Service disponible a Douala
+        <section style={S.hero}>
+            <div style={{ position: 'absolute', top: 80, left: 40, width: 300, height: 300, backgroundColor: 'rgba(5,150,105,0.08)', borderRadius: '50%', filter: 'blur(80px)' }}></div>
+            <div style={{ position: 'absolute', bottom: 80, right: 40, width: 400, height: 400, backgroundColor: 'rgba(16,185,129,0.05)', borderRadius: '50%', filter: 'blur(100px)' }}></div>
+            <div style={S.heroInner}>
+            <div>
+                <div style={S.badge}>
+                <div style={S.dot}></div>
+                Service disponible a Douala
                 </div>
-                <h1 className="text-5xl md:text-7xl font-black text-white leading-tight mb-6">
-                    On livre<br />
-                    <span className="text-green-400">quoi</span><br />
-                    aujourd hui ?
+                <h1 style={S.h1}>
+                On livre<br />
+                <span style={S.h1accent}>quoi</span><br />
+                aujourd hui ?
                 </h1>
-                <p className="text-gray-400 text-lg mb-8 leading-relaxed">
-                    SpeedDelivery, la livraison express urbaine a Douala.
-                    Rapide, fiable et abordable. Vos colis livres en moins d une heure.
+                <p style={S.heroP}>
+                SpeedDelivery, la livraison express urbaine a Douala.
+                Rapide, fiable et abordable. Vos colis livres en moins d une heure.
                 </p>
-                <div className="flex flex-wrap gap-4">
-                    <button
-                    onClick={() => navigate('/register')}
-                    className="bg-green-600 hover:bg-green-500 text-white font-bold px-8 py-4 rounded-xl text-lg transition"
-                    >
+                <div style={S.heroBtns}>
+                <button style={S.btnHero} onClick={() => navigate('/register')}>
                     🚀 Commander maintenant
-                    </button>
-                    <a
-                    href="https://wa.me/237658056947"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex items-center gap-2 border border-green-600 text-green-400 hover:bg-green-600 hover:text-white font-bold px-8 py-4 rounded-xl text-lg transition"
-                    >
+                </button>
+                <a href="https://wa.me/237658056947" target="_blank" rel="noreferrer" style={S.btnHeroOut}>
                     📱 WhatsApp
-                    </a>
+                </a>
                 </div>
-                <div className="flex gap-8 mt-12">
-                    <div>
-                    <p className="text-3xl font-black text-green-400">500+</p>
-                    <p className="text-gray-500 text-sm">Livraisons</p>
-                    </div>
-                    <div>
-                    <p className="text-3xl font-black text-green-400">98%</p>
-                    <p className="text-gray-500 text-sm">Satisfaction</p>
-                    </div>
-                    <div>
-                    <p className="text-3xl font-black text-green-400">1h</p>
-                    <p className="text-gray-500 text-sm">Delai moyen</p>
-                    </div>
+                <div style={S.stats}>
+                <div><div style={S.statNum}>500+</div><div style={S.statLabel}>Livraisons</div></div>
+                <div><div style={S.statNum}>98%</div><div style={S.statLabel}>Satisfaction</div></div>
+                <div><div style={S.statNum}>1h</div><div style={S.statLabel}>Delai moyen</div></div>
                 </div>
-                </div>
-                <div className="relative hidden md:block">
-                <div className="w-80 h-80 mx-auto relative">
-                    <div className="absolute inset-0 bg-green-600/20 rounded-full blur-2xl"></div>
-                    <div className="relative bg-green-900/30 border border-green-700/30 rounded-3xl p-8 text-center">
-                    <div className="text-8xl mb-4">🛵</div>
-                    <div className="bg-green-600/20 border border-green-600/30 rounded-xl p-4 mb-3">
-                        <p className="text-green-400 font-bold text-sm">📍 Depart : Akwa, Douala</p>
-                    </div>
-                    <div className="text-green-400 text-2xl my-2">↓</div>
-                    <div className="bg-green-600/20 border border-green-600/30 rounded-xl p-4 mb-3">
-                        <p className="text-green-400 font-bold text-sm">🎯 Arrivee : Bonapriso</p>
-                    </div>
-                    <div className="bg-green-500 rounded-xl p-3 mt-4">
-                        <p className="text-white font-black">✅ Livre en 35 min !</p>
-                    </div>
-                    </div>
-                </div>
-                </div>
+            </div>
+            <div style={S.heroCard}>
+                <div style={{ fontSize: 72, marginBottom: 16 }}>🛵</div>
+                <div style={S.heroCardRow}><div style={S.heroCardText}>📍 Depart : Akwa, Douala</div></div>
+                <div style={{ color: '#10b981', fontSize: 24, margin: '8px 0' }}>↓</div>
+                <div style={S.heroCardRow}><div style={S.heroCardText}>🎯 Arrivee : Bonapriso</div></div>
+                <div style={S.heroCardResult}><span style={{ color: 'white', fontWeight: 900 }}>✅ Livre en 35 min !</span></div>
             </div>
             </div>
         </section>
 
-        <section id="services" className="bg-gray-950 py-20">
-            <div className="max-w-6xl mx-auto px-6">
-            <div className="text-center mb-16">
-                <h2 className="text-4xl font-black text-white mb-4">
-                Ce qu on <span className="text-green-400">livre</span>
-                </h2>
-                <p className="text-gray-400 text-lg">Tout ce dont vous avez besoin, livre a votre porte</p>
+        <section id="services" style={S.sectionDark}>
+            <div style={S.sectionInner}>
+            <div style={S.sectionTitle}>
+                <h2 style={S.h2}>Ce qu on <span style={S.h2accent}>livre</span></h2>
+                <p style={S.sectionSub}>Tout ce dont vous avez besoin, livre a votre porte</p>
             </div>
-            <div className="grid md:grid-cols-3 gap-6">
+            <div style={S.grid3}>
                 {services.map((s, i) => (
-                <div key={i} className="bg-gray-900 border border-gray-800 hover:border-green-600/50 rounded-2xl p-6 transition group">
-                    <div className="text-4xl mb-4">{s.icon}</div>
-                    <h3 className="text-white font-bold text-lg mb-2 group-hover:text-green-400 transition">{s.title}</h3>
-                    <p className="text-gray-400 text-sm leading-relaxed">{s.desc}</p>
+                <div key={i} style={S.card}>
+                    <div style={S.cardIcon}>{s.icon}</div>
+                    <div style={S.cardTitle}>{s.title}</div>
+                    <div style={S.cardDesc}>{s.desc}</div>
                 </div>
                 ))}
             </div>
             </div>
         </section>
 
-        <section id="comment" className="bg-black py-20">
-            <div className="max-w-6xl mx-auto px-6">
-            <div className="text-center mb-16">
-                <h2 className="text-4xl font-black text-white mb-4">
-                Comment ca <span className="text-green-400">marche ?</span>
-                </h2>
-                <p className="text-gray-400 text-lg">3 etapes simples pour recevoir votre commande</p>
+        <section id="comment" style={S.sectionMid}>
+            <div style={S.sectionInner}>
+            <div style={S.sectionTitle}>
+                <h2 style={S.h2}>Comment ca <span style={S.h2accent}>marche ?</span></h2>
+                <p style={S.sectionSub}>3 etapes simples pour recevoir votre commande</p>
             </div>
-            <div className="grid md:grid-cols-3 gap-8">
+            <div style={S.grid3}>
                 {etapes.map((e, i) => (
-                <div key={i} className="text-center">
-                    <div className="w-16 h-16 bg-green-600 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4">
-                    {e.icon}
-                    </div>
-                    <span className="inline-block bg-green-400 text-black text-xs font-black px-2 py-0.5 rounded-full mb-3">
-                    {e.num}
-                    </span>
-                    <h3 className="text-white font-bold text-xl mb-3">{e.title}</h3>
-                    <p className="text-gray-400 leading-relaxed">{e.desc}</p>
+                <div key={i} style={{ textAlign: 'center' }}>
+                    <div style={S.etapeIcon}>{e.icon}</div>
+                    <div style={S.etapeNum}>{e.num}</div>
+                    <div style={S.etapeTitle}>{e.title}</div>
+                    <div style={S.etapeDesc}>{e.desc}</div>
                 </div>
                 ))}
             </div>
-            <div className="text-center mt-12">
-                <button
-                onClick={() => navigate('/register')}
-                className="bg-green-600 hover:bg-green-500 text-white font-bold px-10 py-4 rounded-xl text-lg transition"
-                >
+            <div style={{ textAlign: 'center', marginTop: 48 }}>
+                <button style={S.btnHero} onClick={() => navigate('/register')}>
                 🚀 Essayer maintenant
                 </button>
             </div>
             </div>
         </section>
 
-        <section id="tarifs" className="bg-gray-950 py-20">
-            <div className="max-w-6xl mx-auto px-6">
-            <div className="text-center mb-16">
-                <h2 className="text-4xl font-black text-white mb-4">
-                Tarifs <span className="text-green-400">transparents</span>
-                </h2>
-                <p className="text-gray-400 text-lg">Pas de frais caches. Payez uniquement ce que vous voyez.</p>
+        <section id="tarifs" style={S.sectionDark}>
+            <div style={S.sectionInner}>
+            <div style={S.sectionTitle}>
+                <h2 style={S.h2}>Tarifs <span style={S.h2accent}>transparents</span></h2>
+                <p style={S.sectionSub}>Pas de frais caches. Payez uniquement ce que vous voyez.</p>
             </div>
-            <div className="grid md:grid-cols-3 gap-6 items-center">
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 24, alignItems: 'center' }}>
                 {tarifs.map((t, i) => (
-                <div key={i} className={`bg-gray-900 border-2 rounded-2xl p-8 relative ${t.popular ? 'border-green-600 scale-105' : 'border-gray-700'}`}>
-                    {t.popular && (
-                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-green-500 text-white text-xs font-black px-4 py-1.5 rounded-full">
-                        ⭐ POPULAIRE
+                <div key={i} style={t.popular ? S.tarifCardPop : { ...S.tarifCard, border: '1px solid #1e2d3d' }}>
+                    {t.popular && <div style={S.popularBadge}>⭐ POPULAIRE</div>}
+                    <div style={S.tarifName}>{t.name}</div>
+                    <div style={S.tarifDesc}>{t.desc}</div>
+                    <div style={{ marginBottom: 24 }}>
+                    <span style={S.tarifPrice}>{t.price}</span>
+                    <span style={S.tarifUnit}>FCFA</span>
                     </div>
-                    )}
-                    <h3 className="text-white font-bold text-xl mb-1">{t.name}</h3>
-                    <p className="text-gray-400 text-sm mb-4">{t.desc}</p>
-                    <div className="flex items-baseline gap-1 mb-6">
-                    <span className="text-4xl font-black text-green-400">{t.price}</span>
-                    <span className="text-gray-400">FCFA</span>
-                    </div>
-                    <ul className="space-y-2 mb-8">
+                    <div>
                     {t.features.map((f, j) => (
-                        <li key={j} className="flex items-center gap-2 text-gray-300 text-sm">
-                        <span className="text-green-400">✓</span> {f}
-                        </li>
+                        <div key={j} style={S.tarifFeature}>
+                        <span style={S.tarifCheck}>✓</span> {f}
+                        </div>
                     ))}
-                    </ul>
+                    </div>
                     <button
+                    style={t.popular ? S.btnTarifSolid : S.btnTarifOut}
                     onClick={() => navigate('/register')}
-                    className={`w-full py-3 rounded-xl font-bold transition ${t.popular ? 'bg-green-600 hover:bg-green-500 text-white' : 'border border-green-600 text-green-400 hover:bg-green-600 hover:text-white'}`}
                     >
                     Choisir ce plan
                     </button>
@@ -263,29 +261,21 @@
             </div>
         </section>
 
-        <section className="bg-black py-20">
-            <div className="max-w-6xl mx-auto px-6">
-            <div className="text-center mb-16">
-                <h2 className="text-4xl font-black text-white mb-4">
-                Ils nous font <span className="text-green-400">confiance</span>
-                </h2>
+        <section style={S.sectionMid}>
+            <div style={S.sectionInner}>
+            <div style={S.sectionTitle}>
+                <h2 style={S.h2}>Ils nous font <span style={S.h2accent}>confiance</span></h2>
             </div>
-            <div className="grid md:grid-cols-3 gap-6">
+            <div style={S.grid3}>
                 {temoignages.map((t, i) => (
-                <div key={i} className="bg-gray-900 border border-gray-800 rounded-2xl p-6">
-                    <div className="flex gap-1 mb-4">
-                    {[1,2,3,4,5].map((j) => (
-                        <span key={j} className="text-yellow-400">★</span>
-                    ))}
-                    </div>
-                    <p className="text-gray-300 text-sm leading-relaxed mb-6">{t.msg}</p>
-                    <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center text-white font-bold">
-                        {t.name[0]}
-                    </div>
+                <div key={i} style={S.temoCard}>
+                    <div style={S.stars}>★★★★★</div>
+                    <p style={S.temoMsg}>{t.msg}</p>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                    <div style={S.temoAvatar}>{t.name[0]}</div>
                     <div>
-                        <p className="text-white font-bold text-sm">{t.name}</p>
-                        <p className="text-gray-400 text-xs">{t.role} · {t.city}</p>
+                        <div style={S.temoName}>{t.name}</div>
+                        <div style={S.temoRole}>{t.role} · {t.city}</div>
                     </div>
                     </div>
                 </div>
@@ -294,79 +284,59 @@
             </div>
         </section>
 
-        <section className="bg-green-600 py-20">
-            <div className="max-w-4xl mx-auto px-6 text-center">
-            <div className="text-6xl mb-6">🛵</div>
-            <h2 className="text-4xl font-black text-white mb-4">
-                Devenez livreur SpeedDelivery
-            </h2>
-            <p className="text-green-100 text-lg mb-8 max-w-2xl mx-auto">
+        <section style={S.livreurSection}>
+            <div style={S.livreurInner}>
+            <div style={{ fontSize: 60, marginBottom: 24 }}>🛵</div>
+            <h2 style={S.livreurH2}>Devenez livreur SpeedDelivery</h2>
+            <p style={S.livreurP}>
                 Rejoignez notre equipe de livreurs a Douala. Travaillez a votre rythme et soyez votre propre patron.
             </p>
-            <div className="flex flex-wrap justify-center gap-4 mb-10">
+            <div style={S.livreurBadges}>
                 {['💰 Revenus attractifs', '⏰ Horaires flexibles', '🏍️ Votre propre moto', '📱 App simple'].map((b, i) => (
-                <div key={i} className="bg-white/20 text-white px-4 py-2 rounded-full text-sm font-medium">{b}</div>
+                <div key={i} style={S.livreurBadge}>{b}</div>
                 ))}
             </div>
-            <button
-                onClick={() => navigate('/register')}
-                className="bg-white text-green-700 hover:bg-green-50 font-black px-10 py-4 rounded-xl text-lg transition"
-            >
+            <button style={S.btnLivreur} onClick={() => navigate('/register')}>
                 Je veux devenir livreur
             </button>
             </div>
         </section>
 
-        <section id="contact" className="bg-gray-950 py-20">
-            <div className="max-w-6xl mx-auto px-6">
-            <div className="text-center mb-16">
-                <h2 className="text-4xl font-black text-white mb-4">
-                Nous <span className="text-green-400">contacter</span>
-                </h2>
+        <section id="contact" style={S.sectionDark}>
+            <div style={S.sectionInner}>
+            <div style={S.sectionTitle}>
+                <h2 style={S.h2}>Nous <span style={S.h2accent}>contacter</span></h2>
             </div>
-            <div className="grid md:grid-cols-3 gap-6">
+            <div style={S.grid3}>
                 {contacts.map((c, i) => (
-                <div key={i} className="bg-gray-900 border border-gray-800 rounded-2xl p-6 text-center">
-                    <div className="text-4xl mb-3">{c.icon}</div>
-                    <h3 className="text-white font-bold mb-1">{c.title}</h3>
-                    <p className="text-gray-400 text-sm mb-4">{c.info}</p>
-                    <a
-                    href={c.link}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-block border border-green-600 text-green-400 hover:bg-green-600 hover:text-white px-4 py-2 rounded-lg text-sm transition"
-                    >
-                    {c.btn}
-                    </a>
+                <div key={i} style={S.contactCard}>
+                    <div style={S.contactIcon}>{c.icon}</div>
+                    <div style={S.contactTitle}>{c.title}</div>
+                    <div style={S.contactInfo}>{c.info}</div>
+                    <a href={c.link} target="_blank" rel="noreferrer" style={S.contactBtn}>{c.btn}</a>
                 </div>
                 ))}
             </div>
             </div>
         </section>
 
-        <footer className="bg-black border-t border-gray-900 py-10">
-            <div className="max-w-6xl mx-auto px-6">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-                <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-green-600 rounded-lg flex items-center justify-center">
-                    <span className="text-white text-xl">⚡</span>
-                </div>
+        <footer style={S.footer}>
+            <div style={S.footerInner}>
+            <div style={S.logo}>
+                <div style={S.logoIcon}>⚡</div>
                 <div>
-                    <p className="text-white font-black">
-                    <span className="text-green-400">SPEED</span>DELIVERY
-                    </p>
-                    <p className="text-gray-500 text-xs">Vos livraisons, notre priorite</p>
-                    <p className="text-green-400 text-xs tracking-widest">📍 DOUALA · CAMEROUN</p>
+                <div style={S.logoText}><span style={{ color: '#10b981' }}>SPEED</span>DELIVERY</div>
+                <div style={{ color: '#64748b', fontSize: 11 }}>Vos livraisons, notre priorite</div>
+                <div style={S.logoSub}>📍 DOUALA · CAMEROUN</div>
                 </div>
-                </div>
-                <div className="flex gap-6 text-sm text-gray-400">
-                <a href="#services" className="hover:text-green-400 transition">Services</a>
-                <a href="#tarifs" className="hover:text-green-400 transition">Tarifs</a>
-                <a href="#contact" className="hover:text-green-400 transition">Contact</a>
-                <button onClick={() => navigate('/login')} className="hover:text-green-400 transition">Connexion</button>
-                </div>
-                <p className="text-gray-600 text-xs">2026 SpeedDelivery. Tous droits reserves.</p>
             </div>
+            <div style={S.footerLinks}>
+                <a href="#services" style={S.footerLink}>Services</a>
+                <a href="#tarifs" style={S.footerLink}>Tarifs</a>
+                <a href="#contact" style={S.footerLink}>Contact</a>
+                <button onClick={() => navigate('/login')} style={{ ...S.footerLink, background: 'none', border: 'none', cursor: 'pointer' }}>Connexion</button>
+            </div>
+            <div style={S.footerCopy}>2026 SpeedDelivery. Tous droits reserves.</div>
             </div>
         </footer>
 
