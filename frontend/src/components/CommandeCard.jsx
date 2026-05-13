@@ -1,12 +1,11 @@
     export default function CommandeCard({ commande }) {
     const statutColors = {
-        EN_ATTENTE: { bg: 'rgba(234,179,8,0.12)', color: '#fbbf24', border: 'rgba(234,179,8,0.3)' },
-        ACCEPTEE: { bg: 'rgba(59,130,246,0.12)', color: '#60a5fa', border: 'rgba(59,130,246,0.3)' },
-        EN_COURS: { bg: 'rgba(5,150,105,0.12)', color: '#10b981', border: 'rgba(5,150,105,0.3)' },
-        LIVREE: { bg: 'rgba(5,150,105,0.2)', color: '#34d399', border: 'rgba(52,211,153,0.4)' },
-        ANNULEE: { bg: 'rgba(239,68,68,0.12)', color: '#f87171', border: 'rgba(239,68,68,0.3)' },
+        EN_ATTENTE: { bg: '#fef3c7', color: '#d97706', border: '#fde68a' },
+        ACCEPTEE: { bg: '#dbeafe', color: '#2563eb', border: '#bfdbfe' },
+        EN_COURS: { bg: '#d1fae5', color: '#059669', border: '#a7f3d0' },
+        LIVREE: { bg: '#d1fae5', color: '#047857', border: '#6ee7b7' },
+        ANNULEE: { bg: '#fee2e2', color: '#dc2626', border: '#fecaca' },
     };
-
     const statutLabels = {
         EN_ATTENTE: '⏳ En attente',
         ACCEPTEE: '✅ Acceptee',
@@ -14,44 +13,28 @@
         LIVREE: '📦 Livree',
         ANNULEE: '❌ Annulee',
     };
-
     const sc = statutColors[commande.statut] || statutColors.EN_ATTENTE;
-
-    const S = {
-        card: { backgroundColor: '#131f2e', border: '1px solid #1e2d3d', borderRadius: 16, padding: 20, fontFamily: 'sans-serif' },
-        header: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 },
-        id: { fontSize: 13, fontWeight: 700, color: '#64748b' },
-        badge: { fontSize: 12, fontWeight: 600, padding: '4px 12px', borderRadius: 999, backgroundColor: sc.bg, color: sc.color, border: `1px solid ${sc.border}` },
-        row: { display: 'flex', alignItems: 'flex-start', gap: 10, marginBottom: 10 },
-        rowIcon: { fontSize: 16, marginTop: 2 },
-        rowLabel: { fontSize: 11, color: '#475569', marginBottom: 2 },
-        rowValue: { fontSize: 14, color: '#cbd5e1' },
-        desc: { fontSize: 13, color: '#475569', fontStyle: 'italic', marginBottom: 12 },
-        footer: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: 12, borderTop: '1px solid #1e2d3d' },
-        price: { fontSize: 16, fontWeight: 900, color: '#10b981' },
-        livreur: { fontSize: 12, color: '#64748b' },
-        date: { fontSize: 12, color: '#334155' },
-    };
-
     return (
-        <div style={S.card}>
-        <div style={S.header}>
-            <span style={S.id}>Commande #{commande.id}</span>
-            <span style={S.badge}>{statutLabels[commande.statut]}</span>
+        <div style={{ backgroundColor: 'white', border: '1px solid #e5e7eb', borderRadius: 16, padding: 20, fontFamily: 'sans-serif' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 }}>
+            <span style={{ fontSize: 13, fontWeight: 700, color: '#6b7280' }}>Commande #{commande.id}</span>
+            <span style={{ fontSize: 11, fontWeight: 600, padding: '4px 12px', borderRadius: 999, backgroundColor: sc.bg, color: sc.color, border: '1px solid ' + sc.border }}>{statutLabels[commande.statut]}</span>
         </div>
-        <div style={S.row}>
-            <span style={S.rowIcon}>📍</span>
-            <div><div style={S.rowLabel}>Depart</div><div style={S.rowValue}>{commande.adresseDepart}</div></div>
+        <div style={{ marginBottom: 10 }}>
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: 8, marginBottom: 8 }}>
+            <span style={{ fontSize: 15 }}>📍</span>
+            <div><div style={{ fontSize: 10, color: '#9ca3af', marginBottom: 1 }}>Depart</div><div style={{ fontSize: 13, color: '#374151' }}>{commande.adresseDepart}</div></div>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
+            <span style={{ fontSize: 15 }}>🎯</span>
+            <div><div style={{ fontSize: 10, color: '#9ca3af', marginBottom: 1 }}>Arrivee</div><div style={{ fontSize: 13, color: '#374151' }}>{commande.adresseArrivee}</div></div>
+            </div>
         </div>
-        <div style={S.row}>
-            <span style={S.rowIcon}>🎯</span>
-            <div><div style={S.rowLabel}>Arrivee</div><div style={S.rowValue}>{commande.adresseArrivee}</div></div>
-        </div>
-        {commande.description && <div style={S.desc}>"{commande.description}"</div>}
-        <div style={S.footer}>
-            <span style={S.price}>{commande.prix} FCFA</span>
-            {commande.livreur && <span style={S.livreur}>🛵 {commande.livreur.name}</span>}
-            <span style={S.date}>{new Date(commande.createdAt).toLocaleDateString('fr-FR')}</span>
+        {commande.description && <div style={{ fontSize: 12, color: '#9ca3af', fontStyle: 'italic', marginBottom: 10 }}>"{commande.description}"</div>}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: 12, borderTop: '1px solid #f3f4f6' }}>
+            <span style={{ fontSize: 15, fontWeight: 900, color: '#059669' }}>{commande.prix} FCFA</span>
+            {commande.livreur && <span style={{ fontSize: 12, color: '#6b7280' }}>🛵 {commande.livreur.name}</span>}
+            <span style={{ fontSize: 11, color: '#9ca3af' }}>{new Date(commande.createdAt).toLocaleDateString('fr-FR')}</span>
         </div>
         </div>
     );
